@@ -4,7 +4,8 @@ import NoteForm from './components/NoteForm';
 import NoteList from './components/NoteList';
 import './App.css';
 
-const API_URL = 'http://localhost:8000/api/notes/';
+// const API_URL = 'http://localhost:8000/api/notes/';
+const API_URL = 'https://notes-application-neon.vercel.app/api/notes/';
 
 function App() {
   const [notes, setNotes] = useState([]);

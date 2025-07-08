@@ -4,7 +4,10 @@
     {
       "src": "backend/backend/wsgi.py",
       "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb", "runtime": "python3.12" }
+      "config": { 
+        "maxLambdaSize": "15mb", 
+        "runtime": "python3.12" 
+      }
     },
     {
       "src": "frontend/package.json",
@@ -17,7 +20,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "api/wsgi.py"
+      "dest": "backend/backend/wsgi.py"
     },
     {
       "src": "/(.*)",

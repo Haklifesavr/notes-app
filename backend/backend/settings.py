@@ -84,10 +84,21 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 #     }
 # }
 
-DATABASE_URL = 'postgresql://postgres:Dev2598%23@db.xummbtywtczdpihdgbmy.supabase.co:5432/postgres'
+# Database - Replace with your Neon connection string
+# DATABASE_URL = 'postgresql://username:password@ep-xxx.us-east-1.aws.neon.tech/dbname'
+DATABASE_URL = 'postgresql://postgres:Dev2598%23@db.xummbtywtczdpihdgbmy.supabase.co:5432/postgres?sslmode=require&options=-c%20default_transaction_isolation%3Dread_committed'
+
+# Database - Supabase connection pooler (IPv4 compatible)
+DATABASE_URL = 'postgresql://postgres.xummbtywtczdpihdgbmy:Dev2598%23@aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres'
 
 DATABASES = {
-    'default': dj_database_url.parse(DATABASE_URL)
+    'default': {
+        **dj_database_url.parse(DATABASE_URL),
+        'CONN_MAX_AGE': 0,  # Important for serverless
+        'OPTIONS': {
+            'sslmode': 'require',
+        },
+    }
 }
 
 # Password validation
